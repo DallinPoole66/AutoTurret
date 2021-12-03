@@ -12,11 +12,13 @@ import MotorController
 import DistanceSensorController
 
 # Pins for the stepper motors
-YAW_MOTOR_PINS    = (0, 0, 0, 0)
-PITCH_MOTOR_PINS  = (0, 0, 0, 0)
-FIRING_MOTOR_PINS = (0, 0, 0, 0)
+YAW_MOTOR_PINS    = (6, 13, 19, 26)
+PITCH_MOTOR_PINS  = (7, 1, 0, 5)
+FIRING_MOTOR_PINS = (9, 11, 25, 8)
+DISTANCE_SENSOR_PINS = (16, 20)
+RGB_PINS = (4, 3, 2)
 
-LAUNCHER_PIN = 0
+LAUNCHER_PIN = 14
 
 
 
@@ -102,10 +104,16 @@ class Manager:
     
 
 
+
+def test():
+    yaw = MotorController.MotorController(YAW_MOTOR_PINS)
+    while(True):
+        yaw.test_rotate()
+        
 if __name__ == "__main__":
     manager = Manager()
     manager.start()
-
+    test()
     # Loop the program
     while(True):
         manager.update()

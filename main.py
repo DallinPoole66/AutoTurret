@@ -39,7 +39,7 @@ class Manager:
         self.firing_motor = MotorController.MotorController( FIRING_MOTOR_PINS, self.should_fire )
 
         # Make our camera.
-        self.cam_controller = CameraController(self.phase, self.desired_yaw_rotation, self.desired_pitch_rotation )
+        self.cam_controller = CameraController.CameraController(self.phase, self.desired_yaw_rotation, self.desired_pitch_rotation )
 
         # Make our distance sensor controller.
         self.dist_controller = DistanceSensorController.DistanceSensorController(self.phase, self.desired_pitch_rotation)
@@ -104,3 +104,8 @@ class Manager:
 
 if __name__ == "__main__":
     manager = Manager()
+    manager.start()
+
+    # Loop the program
+    while(True):
+        manager.update()
